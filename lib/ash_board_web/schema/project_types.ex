@@ -29,20 +29,18 @@ defmodule AshBoardWeb.Schema.ProjectTypes do
 
     @desc "Get a project by name"
     field :project, :project do
-      arg :name, :string
+      arg :name, non_null(:string)
       resolve &Projects.get_project_by_name/2
     end
 
     @desc "Get all projects by current user"
-    field :list_project, list_of(:project) do
+    field :project_by_current_user, list_of(:project) do
       resolve &Projects.get_projects_by_current_user/2
     end
 
-    # @desc "Get project by"
-
     @desc "Get all projects by user"
     field :list_project, list_of(:project_with_user) do
-      arg :user_id
+      arg :user_id, non_null(:id)
       resolve &Projects.get_projects_by_user/2
     end
   end
@@ -50,14 +48,14 @@ defmodule AshBoardWeb.Schema.ProjectTypes do
   object :project_mutations do
     @desc "Create a new project"
     field :create_project, :project do
-      arg :name, :string
+      arg :name, non_null(:string)
       arg :details, :string
       resolve &Projects.create_project/2
     end
 
     @desc "Update a project"
     field :update_project, :project do
-      arg :id, :id
+      arg :id, non_null(:id)
       arg :name, :string
       arg :details, :string
       arg :progress, :integer
