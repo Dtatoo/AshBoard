@@ -10,7 +10,7 @@ defmodule AshBoardWeb.Resolvers.Projects do
   end
 
   def get_project_by_name(%{name: name}, _) do
-    Projects.get_project_by_name(name)
+    {:ok, Projects.get_project_by_name(name)}
   end
 
   def get_projects_by_user(%{user_id: user_id}, _) do
@@ -19,10 +19,6 @@ defmodule AshBoardWeb.Resolvers.Projects do
 
   def get_projects_by_current_user(_, %{context: %{current_user: user}}) do
     {:ok, Projects.get_projects_by_user(user.id)}
-  end
-
-  def get_project_by_name(%{name: name}, _) do
-    {:ok, Projects.get_project_by_name(name)}
   end
 
   def create_project(attrs = %{name: name} , %{context: %{current_user: user}}) do
