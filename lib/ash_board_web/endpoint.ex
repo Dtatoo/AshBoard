@@ -1,5 +1,6 @@
 defmodule AshBoardWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ash_board
+  use Absinthe.Phoenix.Endpoint
 
   socket "/socket", AshBoardWeb.UserSocket
 

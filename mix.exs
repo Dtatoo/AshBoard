@@ -44,7 +44,8 @@ defmodule AshBoard.Mixfile do
       {:comeonin, "~> 4.0"},
       {:pbkdf2_elixir, "~> 0.12"},
       {:absinthe, "~> 1.4"},
-      {:absinthe_plug, "~> 1.4"}
+      {:absinthe_plug, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4"}
     ]
   end
 
