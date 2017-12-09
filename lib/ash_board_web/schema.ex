@@ -23,6 +23,10 @@ defmodule AshBoardWeb.Schema do
     import_fields :project_mutations
   end
 
+  subscription do
+    import_fields :project_subscriptions
+  end
+
   def middleware(middleware, _field, %{identifier: :mutation}) do
     middleware ++ [Middleware.ChangesetErrors]
   end

@@ -24,11 +24,18 @@ defmodule AshBoardWeb.Resolvers.Projects do
   def create_project(attrs = %{name: name} , %{context: %{current_user: user}}) do
     Map.put(attrs, :user_id, user.id)
     |> Projects.create_project()
+    |> project_result()
   end
 
   def update_project(attrs = %{id: id}, _) do
     Projects.get_project!(id)
     |> Projects.update_project(attrs)
+    |> project_result()
   end
+
+  defp project_result({:ok, project}) do
+    {:ok, %{project: project}}
+  end
+  defp project_result(other), do: other
 
 end

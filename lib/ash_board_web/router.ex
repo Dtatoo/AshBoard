@@ -22,6 +22,7 @@ defmodule AshBoardWeb.Router do
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: AshBoardWeb.Schema,
+      interface: :playground,
       socket: AshBoardWeb.UserSocket
   end
 
